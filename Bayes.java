@@ -28,14 +28,14 @@ import org.jfree.data.xy.XYSeriesCollection;
 public class Bayes extends JFrame implements ActionListener{
 	
 	//Combobox for Standardfordeling, Betafordeling og Normalfordeling
-	//Noen jtextfields for prior, lik, posterior. De hører til standardfordeling
-	//Noen checkboxes for velge selv/nøytral, noen jtextfields for a og b verdi, en graf og noen verdier for E[X], Var[X] og O[X] (sigma). Dette er for Betafordeling
-	//Normalfordeling er variansanalyse. Man velger tre checkboxes og får ut et prosent i et jtextfield(?)
+	//Noen jtextfields for prior, lik, posterior. De hÃ¸rer til standardfordeling
+	//Noen checkboxes for velge selv/nÃ¸ytral, noen jtextfields for a og b verdi, en graf og noen verdier for E[X], Var[X] og O[X] (sigma). Dette er for Betafordeling
+	//Normalfordeling er variansanalyse. Man velger tre checkboxes og fÃ¥r ut et prosent i et jtextfield(?)
 	
 	
 	//Lister String
-	String[] fordelingsListe = {"-- Velg fordelingsmåte --", "Standardfordeling", "Betafordeling"};
-	String[] nøytralListe = {"-- Velg prior --", "Haldane's", "Jeffreys'", "Bayes"};
+	String[] fordelingsListe = {"-- Velg fordelingsmÃ¥te --", "Standardfordeling", "Betafordeling"};
+	String[] nÃ¸ytralListe = {"-- Velg prior --", "Haldane's", "Jeffreys'", "Bayes"};
 	
 	//Lister int
 	double[] xPoints = new double[1001];
@@ -67,11 +67,11 @@ public class Bayes extends JFrame implements ActionListener{
 	
 	//Comboboxes
 	JComboBox fordeling = new JComboBox(fordelingsListe);
-	JComboBox nøytral = new JComboBox(nøytralListe);
+	JComboBox nÃ¸ytral = new JComboBox(nÃ¸ytralListe);
 	
 	//JRadioButton
 	JRadioButton vs = new JRadioButton("Velg Selv");
-	JRadioButton nøy = new JRadioButton("Nøytral");
+	JRadioButton nÃ¸y = new JRadioButton("NÃ¸ytral");
 	
 	//Buttongroup
 	ButtonGroup beta = new ButtonGroup();
@@ -98,7 +98,7 @@ public class Bayes extends JFrame implements ActionListener{
 	final JFreeChart chart = ChartFactory.createXYLineChart("Fordeling", "X", "Y", data, PlotOrientation.VERTICAL, true, true, false);
 	final ChartPanel chartPanel = new ChartPanel(chart);
 	
-	//Height og Width på skjermen
+	//Height og Width pÃ¥ skjermen
 	Toolkit tk = Toolkit.getDefaultToolkit();
 	Dimension d = tk.getScreenSize();
 	int w = d.width;
@@ -108,9 +108,9 @@ public class Bayes extends JFrame implements ActionListener{
 		//ButtonGroup
 		ButtonGroup beta = new ButtonGroup();
 		beta.add(vs);
-		beta.add(nøy);
+		beta.add(nÃ¸y);
 		
-		//Gjør JTextFields uneditable
+		//GjÃ¸r JTextFields uneditable
 		kf.setEditable(false);
 		lf.setEditable(false);
 		
@@ -120,7 +120,7 @@ public class Bayes extends JFrame implements ActionListener{
 		//Adder
 		this.add(fordeling);
 		this.add(vs);
-		this.add(nøy);
+		this.add(nÃ¸y);
 		this.add(kf);
 		this.add(lf);
 		this.add(ex);
@@ -130,7 +130,7 @@ public class Bayes extends JFrame implements ActionListener{
 		this.add(lLabel);
 		this.add(regnUt);
 		this.add(chartPanel);
-		this.add(nøytral);
+		this.add(nÃ¸ytral);
 		this.add(standardScroll);
 		this.add(addRad);
 		this.add(fjernRad);
@@ -138,10 +138,10 @@ public class Bayes extends JFrame implements ActionListener{
 		this.add(forSide);
 		
 		
-		//Setter location relativ til skjermstørrelse
+		//Setter location relativ til skjermstÃ¸rrelse
 		fordeling.setLocation((int) (w/13.66), (int) (h/7.68));
 		vs.setLocation((int) (w/6.83), (int) (h/3.84));
-		nøy.setLocation((int) (w/6.83), (int) (h/3.41333));
+		nÃ¸y.setLocation((int) (w/6.83), (int) (h/3.41333));
 		kf.setLocation((int) (w/2.732), (int) (h/7.68));
 		lf.setLocation((int) (w/2.44), (int) (h/7.68));
 		ex.setLocation((int) (w/2.732), (int) (h/1.449));
@@ -151,17 +151,17 @@ public class Bayes extends JFrame implements ActionListener{
 		lLabel.setLocation((int) (w/2.355), (int) (h/10.24));
 		regnUt.setLocation((int) (w/13.66), (int) (h/1.92));
 		chartPanel.setLocation((int) (w/3.903), (int) (h/5.12));
-		nøytral.setLocation((int) (w/6.83), (int) (h/3.072));
+		nÃ¸ytral.setLocation((int) (w/6.83), (int) (h/3.072));
 		standardScroll.setLocation((int) (w/3.415), (int) (h/7.68));
 		addRad.setLocation((int) (w/1.4379), (int) (h/7.68));
 		fjernRad.setLocation((int) (w/1.4379), (int) (h/5.12));
 		slettTabell.setLocation((int) (w/1.4379), (int) (h/3.84));
 		forSide.setLocation((int) (w/2.7), (int) (h/1000-50));
 		
-		//Setter size relativ til skjermstørrelse
+		//Setter size relativ til skjermstÃ¸rrelse
 		fordeling.setSize((int) (w/7.66), (int) (h/30.72));
 		vs.setSize((int) (w/13.66), (int) (h/30.72));
-		nøy.setSize((int) (w/13.66), (int) (h/30.72));
+		nÃ¸y.setSize((int) (w/13.66), (int) (h/30.72));
 		kf.setSize((int) (w/27.32), (int) (h/30.72));
 		lf.setSize((int) (w/27.32), (int) (h/30.72));
 		ex.setSize((int) (w/6.83), (int) (h/30.72));
@@ -171,7 +171,7 @@ public class Bayes extends JFrame implements ActionListener{
 		lLabel.setSize((int) (w/13.66), (int) (h/30.72));
 		regnUt.setSize((int) (w/13.66), (int) (h/30.72));
 		chartPanel.setSize(new java.awt.Dimension((int) (w/1.7075), (int) (h/2.1943)));
-		nøytral.setSize((int) (w/10.928), (int) (h/30.72));
+		nÃ¸ytral.setSize((int) (w/10.928), (int) (h/30.72));
 		standardScroll.setSize((int) (w/2.732), (int) (h/3.84));
 		addRad.setSize((int) (w/6.83), (int) (h/30.72));
 		fjernRad.setSize((int) (w/6.83), (int) (h/30.72));
@@ -182,8 +182,8 @@ public class Bayes extends JFrame implements ActionListener{
 		fordeling.addActionListener(this);
 		regnUt.addActionListener(this);
 		vs.addActionListener(this);
-		nøy.addActionListener(this);
-		nøytral.addActionListener(this);
+		nÃ¸y.addActionListener(this);
+		nÃ¸ytral.addActionListener(this);
 		addRad.addActionListener(this);
 		fjernRad.addActionListener(this);
 		slettTabell.addActionListener(this);
@@ -201,7 +201,7 @@ public class Bayes extends JFrame implements ActionListener{
 	//Setter alt usynlig
 	public void usynlig() {
 		vs.setVisible(false);
-		nøy.setVisible(false);
+		nÃ¸y.setVisible(false);
 		kf.setVisible(false);
 		lf.setVisible(false);
 		ex.setVisible(false);
@@ -211,7 +211,7 @@ public class Bayes extends JFrame implements ActionListener{
 		lLabel.setVisible(false);
 		regnUt.setVisible(false);
 		chartPanel.setVisible(false);
-		nøytral.setVisible(false);
+		nÃ¸ytral.setVisible(false);
 		standardScroll.setVisible(false);
 		addRad.setVisible(false);
 		fjernRad.setVisible(false);
@@ -236,17 +236,17 @@ public class Bayes extends JFrame implements ActionListener{
 			fjernRad.setVisible(true);
 			slettTabell.setVisible(true);
 			
-			//Hvis noen trykker på "addRad" så blir det lagt til en rad
+			//Hvis noen trykker pÃ¥ "addRad" sÃ¥ blir det lagt til en rad
 			if(arg0.getSource().equals(addRad)){
 				dfmodel.addRow(new Object[]{"", "", ""});	
 				antRad += 1;
 			}
-			//Hvis noen trykker "fjernRad" så fjernes en rad
+			//Hvis noen trykker "fjernRad" sÃ¥ fjernes en rad
 			if(arg0.getSource().equals(fjernRad)){
 				dfmodel.removeRow(standardTable.getSelectedRow());
 				antRad -= 1;
 			}
-			//Tømmer hele tabellen om noen trykker på "slettTabell"
+			//TÃ¸mmer hele tabellen om noen trykker pÃ¥ "slettTabell"
 			if(arg0.getSource().equals(slettTabell)){
 				for(int i = 0 ; i < antRad ; i++){
 					dfmodel.removeRow(0);
@@ -255,7 +255,7 @@ public class Bayes extends JFrame implements ActionListener{
 			}
 			
 			
-			//Sjekker om noen trykket på Regn ut
+			//Sjekker om noen trykket pÃ¥ Regn ut
 			if(arg0.getSource().equals(regnUt)){
 				standardTable.clearSelection();
 				pabh = 0.0;
@@ -287,7 +287,7 @@ public class Bayes extends JFrame implements ActionListener{
 			//Setter visible og invisible
 			usynlig();
 			vs.setVisible(true);
-			nøy.setVisible(true);
+			nÃ¸y.setVisible(true);
 			kf.setVisible(true);
 			lf.setVisible(true);
 			ex.setVisible(true);
@@ -302,19 +302,20 @@ public class Bayes extends JFrame implements ActionListener{
 			if(vs.isSelected() == true){
 				kf.setEditable(true);
 				lf.setEditable(true);
-				nøytral.setVisible(false);
+				nÃ¸ytral.setVisible(false);
+				nÃ¸ytral.setSelectedItem("-- Velg prior --");
 			}
-			//Sjekker om 'nøytral' radio button er valgt
-			if(nøy.isSelected() == true){
+			//Sjekker om 'nÃ¸ytral' radio button er valgt
+			if(nÃ¸y.isSelected() == true){
 				kf.setEditable(false);
 				lf.setEditable(false);
 				kf.setText("");
 				lf.setText("");
-				nøytral.setVisible(true);
+				nÃ¸ytral.setVisible(true);
 				
 			}
 			
-			//Sjekker om de trykket på Regn ut
+			//Sjekker om de trykket pÃ¥ Regn ut
 			if(arg0.getSource().equals(regnUt)){
 				
 				//Clearer grafen
@@ -322,22 +323,22 @@ public class Bayes extends JFrame implements ActionListener{
 				
 				//Sjekker om velg selv er satt
 				if(vs.isSelected()){
-					//Gjør k og l til tekst
-					nøytral.setSelectedItem("-- Velg verdi --");
+					//GjÃ¸r k og l til tekst
+					nÃ¸ytral.setSelectedItem("-- Velg verdi --");
 					kt = Double.parseDouble(kf.getText());
 					lt = Double.parseDouble(lf.getText());
 				}
 				
 				//Sjekker hvilken ComboBox som er valgt av 0, 1/2 og 1 og setter verdier
-				if(nøytral.getSelectedItem().equals("Haldane's")){
+				if(nÃ¸ytral.getSelectedItem().equals("Haldane's")){
 					kt = 0.0;
 					lt = 0.0;
 				}
-				if(nøytral.getSelectedItem().equals("Jeffreys'")){
+				if(nÃ¸ytral.getSelectedItem().equals("Jeffreys'")){
 					kt = 0.5;
 					lt = 0.5;
 				}
-				if(nøytral.getSelectedItem().equals("Bayes")){
+				if(nÃ¸ytral.getSelectedItem().equals("Bayes")){
 					kt = 1.0;
 					lt = 1.0;
 				}
